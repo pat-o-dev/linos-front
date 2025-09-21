@@ -2,12 +2,14 @@
 import { onMounted, computed } from "vue";
 import type { Category } from '@/types/shop'
 import { useProducts } from '@/composables/useProducts'
+import Error from '@/components/layouts/Error.vue'
 import Card from "./Card.vue";
 
 const props = withDefaults(
   defineProps<{
-    quantity: number;
-    category: Category;
+    quantity: number,
+    category: Category,
+    title?: string
   }>(),
   {
     quantity: 2,
@@ -34,7 +36,8 @@ onMounted(() => {
 
 <template>
   <div class="w-full max-w-full bg-base-300 rounded-4xl p-6 lg:mb-6">
-    <h2 class="text-5xl font-bold mb-3">{{ category.title }}</h2>
+    <h2 v-if="title" class="text-5xl font-bold mb-3">{{ title }}</h2>
+    <h2 v-else class="text-5xl font-bold mb-3">{{ category.title }}</h2>
     <div v-if="state === 'loading'">Loading</div>
     <div
       v-else-if="state === 'ready'"
@@ -45,20 +48,7 @@ onMounted(() => {
       </template>
     </div>
     <div v-else role="alert" class="alert alert-error">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        class="h-6 w-6 shrink-0 stroke-current"
-        fill="none"
-        viewBox="0 0 24 24"
-      >
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
-        />
-      </svg>
-      <span>Error! Task failed successfully.</span>
+      <Error />
     </div>
   </div>
 </template>

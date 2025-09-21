@@ -22,7 +22,7 @@ const routes = [
     component: ProductView
    },
   { 
-    path: '/categories/:id(\\d+)',
+    path: '/categories/:slug',
     name: 'categories.view',
     component: CategoryView
    },

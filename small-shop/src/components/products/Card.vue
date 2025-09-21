@@ -7,7 +7,6 @@ const props = defineProps<{ product: Product }>()
 <template>
     <div  class="card bg-base-100 w-full shadow-sm hover:shadow-2xl border border-base-200">
         <figure class="p-4">
-            
             <img
             :src="product.image"
             class="w-48 aspect-square"

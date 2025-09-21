@@ -6,8 +6,9 @@ export function useProducts() {
 
     const state = ref<"loading" | "ready" | "error">("loading")
     const products = ref<Product[]>()
+    const product = ref<Product>()
 
-    const loadProducts = async (category: string, limit: number ) => {
+    const loadProducts = async (category: string, limit: number) => {
         state.value = "loading"
         try {
             const res = await axios.get(
@@ -20,9 +21,24 @@ export function useProducts() {
         }
     }
 
+    const findProduct = async (id: number) => {
+        state.value = "loading"
+        try {
+            const res = await axios.get(
+                `https://fakestoreapi.com/products/${id}`
+            )
+            product.value = res.data
+            state.value = "ready"
+        } catch {
+            state.value = "error"
+        }
+    }
+
     return {
         state,
         products,
-        loadProducts
+        product,
+        loadProducts,
+        findProduct,
     }
 }
