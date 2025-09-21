@@ -1,22 +1,24 @@
-<script setup>
+<script lang="ts" setup>
+import type { Product } from '@/types/widgets'
 
-
-
-    
+const props = defineProps<{ product: Product }>()
 </script>
 
 <template>
-    <div class="card bg-base-100 w-full shadow-sm hover:shadow-2xl border border-base-200">
-        <figure>
+    <div  class="card bg-base-100 w-full shadow-sm hover:shadow-2xl border border-base-200">
+        <figure class="p-4">
+            
             <img
-            src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+            :src="product.image"
+            class="w-48 aspect-square"
             alt="Shoes" />
         </figure>
         <div class="card-body">
-            <h2 class="card-title">Card Title</h2>
-            <p>A card component has a figure, a body part, and inside body there are title and actions parts</p>
-            <div class="card-actions justify-end">
-            <button class="btn btn-primary">Buy Now</button>
+            <h2 class="card-title h-[3rem] line-clamp-2 overflow-hidden">{{ product.title }}</h2>
+            <p class="line-clamp-4 overflow-hidden">{{ product.description }}</p>
+            <div class="card-actions justify-between flex items-center">
+                <span class="text-2xl">{{ product.price.toFixed(2) }}€</span>
+                <button class="btn btn-primary">Buy Now</button>
             </div>
         </div>
     </div>

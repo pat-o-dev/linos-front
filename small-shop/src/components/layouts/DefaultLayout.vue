@@ -10,7 +10,7 @@ import Footer from '@/components/layouts/Footer.vue'
             <Navbar />
         </div>
         
-        <main class="flex-1 mx-auto p-4">
+        <main class="container mx-auto my-6">
             <slot />
         </main>
 
@@ -22,7 +22,5 @@ import Footer from '@/components/layouts/Footer.vue'
 </template>
 
 <style scoped>
-    main {
-        padding: 20px;
-    }
+
 </style>

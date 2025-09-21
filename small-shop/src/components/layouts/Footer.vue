@@ -1,7 +1,7 @@
 <script setup></script>
 
 <template>
-  <footer class="w-full footer sm:footer-horizontal bg-base-200 text-base-content p-10">
+  <footer class="w-full footer sm:footer-horizontal bg-base-300 text-base-content rounded-xl p-10">
     <aside class="flex items-center space-x-4">
       <svg
         width="50"
