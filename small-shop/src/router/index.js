@@ -3,6 +3,8 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '@/Pages/HomeView.vue'
 import AboutView from '@/Pages/AboutView.vue'
 import ProductView from '@/Pages/ProductView.vue'
+import CategoryView from '@/Pages/CategoryView.vue'
+
 const routes = [
   { 
     path: '/', 
@@ -16,15 +18,17 @@ const routes = [
   },
   { 
     path: '/products/:id(\\d+)',
-    name: 'products.index',
+    name: 'products.view',
     component: ProductView
+   },
+  { 
+    path: '/categories/:id(\\d+)',
+    name: 'categories.view',
+    component: CategoryView
    },
 ]
 
-
 const router = createRouter({
-  linkActiveClass: 'border-red-500',
-  linkExactActiveClass: 'border-red-700',
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: routes,
 })

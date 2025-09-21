@@ -14,7 +14,7 @@ const props = withDefaults(
 </script>
 
 <template>
-  <NavLink :to="{ name: 'products.index', params: { id: props.id } }">
+  <NavLink :to="{ name: 'products.view', params: { id: props.id } }">
     <slot />
   </NavLink>
 </template>
