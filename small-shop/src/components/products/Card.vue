@@ -1,7 +1,12 @@
-<script setup></script>
+<script setup>
+
+
+
+    
+</script>
 
 <template>
-    <div class="card bg-base-100 w-full shadow-sm border border-base-200">
+    <div class="card bg-base-100 w-full shadow-sm hover:shadow-2xl border border-base-200">
         <figure>
             <img
             src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"

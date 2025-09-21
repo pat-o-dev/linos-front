@@ -9,9 +9,9 @@ const props = defineProps({
 </script>
 
 <template>
-  <div class="w-full max-w-full p-3">
+  <div class="w-full max-w-full  bg-base-300 rounded-4xl p-6">
     <h2 class="text-5xl font-bold mb-3">{{ title }}</h2>
-    <div class="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 space-x-6">
+    <div class="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
         <Card />
         <Card />
         <Card />
