@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import type { Product } from '@/types/widgets'
-
+import type { Product } from '@/types/shop'
+import Productlink from "@/components/products/Navlink.vue"
 const props = defineProps<{ product: Product }>()
 </script>
 
@@ -14,7 +14,11 @@ const props = defineProps<{ product: Product }>()
             alt="Shoes" />
         </figure>
         <div class="card-body">
-            <h2 class="card-title h-[3rem] line-clamp-2 overflow-hidden">{{ product.title }}</h2>
+            <h2 class="card-title h-[3rem] line-clamp-2 overflow-hidden">
+                <Productlink :id="product.id">
+                    {{ product.title }}
+                </Productlink>
+            </h2>
             <p class="line-clamp-4 overflow-hidden">{{ product.description }}</p>
             <div class="card-actions justify-between flex items-center">
                 <span class="text-2xl">{{ product.price.toFixed(2) }}€</span>

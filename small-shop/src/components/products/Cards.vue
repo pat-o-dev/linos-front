@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { onMounted, computed } from "vue";
-import type { Category } from '@/types/widgets'
+import type { Category } from '@/types/shop'
 import { useProducts } from '@/composables/useProducts'
 import Card from "./Card.vue";
 
@@ -18,9 +18,13 @@ const props = withDefaults(
 const { state, products, loadProducts } = useProducts()
 
 const gridClass = computed(() => {
-    const lg = props.quantity > 2 ? 3 : 2
-    const xl = props.quantity > lg ? 4 : lg
-    return `grid grid-cols-2 lg:grid-cols-${lg} xl:grid-cols-${xl} gap-4`
+  const classes = ['grid', 'gap-4']
+
+  if (props.quantity > 1) classes.push('grid-cols-2')
+  if (props.quantity > 2) classes.push('lg:grid-cols-3')
+  if (props.quantity > 3) classes.push('xl:grid-cols-4')
+
+  return classes
 })
 
 onMounted(() => {
@@ -29,7 +33,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="w-full max-w-full bg-base-300 rounded-4xl p-6 mb-6">
+  <div class="w-full max-w-full bg-base-300 rounded-4xl p-6 lg:mb-6">
     <h2 class="text-5xl font-bold mb-3">{{ category.title }}</h2>
     <div v-if="state === 'loading'">Loading</div>
     <div

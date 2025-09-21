@@ -1,6 +1,6 @@
 import { ref } from 'vue'
 import axios from 'axios'
-import type { Product } from '@/types/widgets/'
+import type { Product } from '@/types/shop'
 
 export function useProducts() {
 
