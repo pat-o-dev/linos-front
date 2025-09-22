@@ -1,5 +1,8 @@
 <script lang="ts" setup>
 import type { Product } from '@/types/shop'
+import { useCartStore } from "@/stores/cartStore";
+
+const cart = useCartStore();
 
 interface Props {
     product?: Product,
@@ -9,8 +12,13 @@ const props = withDefaults(defineProps<Props>(), {
     product: null,
 });
 
+const addToCart = (event) => {
+    cart.add(props.product, 1)
+    console.log(props.product)
+}
+
 </script>
 
 <template>
-    <button @click="console.log('add to cart')" class="btn btn-primary">Buy Now</button>
+    <button @click="addToCart" class="btn btn-primary">Buy Now</button>
 </template>

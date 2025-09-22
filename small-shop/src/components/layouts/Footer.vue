@@ -1,4 +1,6 @@
-<script setup></script>
+<script setup>
+
+</script>
 
 <template>
   <footer class="w-full footer sm:footer-horizontal bg-base-300 text-base-content rounded-xl p-10">
@@ -17,9 +19,7 @@
         ></path>
       </svg>
       <p>
-        SmallShop
-        <br />
-        Providing reliable tech since 1992
+        SmallShop 
       </p>
     </aside>
   </footer>

@@ -19,3 +19,8 @@ export interface Rating {
   rate: number
   count: number
 }
+
+export interface CartItem {
+    id: number; // product id
+    q: number; // quantity
+}

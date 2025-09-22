@@ -1,2 +1,3 @@
-small-shop/src/App.vue
 small-shop/package-lock.json
+node_modules/
+.gitignore
