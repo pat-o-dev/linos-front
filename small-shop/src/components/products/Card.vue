@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import type { Product } from "@/types/shop"
-import Productlink from "@/components/navs/Productlink.vue"
+import Productlink from "@/components/navs/ProductLink.vue"
 import BtnAddCart from "@/components/products/BtnAddCart.vue"
 import Price from '@/components/products/Price.vue'
 
