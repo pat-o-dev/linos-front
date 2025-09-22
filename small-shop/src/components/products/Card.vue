@@ -1,6 +1,9 @@
 <script lang="ts" setup>
-import type { Product } from "@/types/shop";
-import Productlink from "@/components/navs/Productlink.vue";
+import type { Product } from "@/types/shop"
+import Productlink from "@/components/navs/Productlink.vue"
+import BtnAddCart from "@/components/products/BtnAddCart.vue"
+import Price from '@/components/products/Price.vue'
+
 const props = defineProps<{ product: Product }>();
 </script>
 
@@ -26,8 +29,8 @@ const props = defineProps<{ product: Product }>();
       </h2>
       <p class="line-clamp-4 overflow-hidden">{{ product.description }}</p>
       <div class="card-actions justify-between flex items-center">
-        <span class="text-2xl">{{ product.price.toFixed(2) }}€</span>
-        <button class="btn btn-primary">Buy Now</button>
+        <Price :price="product.price" />
+        <BtnAddCart :product="product" />
       </div>
     </div>
   </div>

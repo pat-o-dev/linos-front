@@ -4,49 +4,33 @@ import { useRoute } from "vue-router";
 import { useCategories } from "@/composables/useCategories";
 import Loading from "@/components/layouts/Loading.vue";
 import Error from "@/components/layouts/Error.vue";
+import DisplayController from "@/components/categories/DisplayController.vue";
 import ProductsTable from "@/components/categories/ProductsTable.vue";
 import ProductsGrid from "@/components/categories/ProductsGrid.vue";
 
 const router = useRoute();
 const slug = ref(String(router.params.slug));
-const displaView = ref<"ProductsTable" | "ProductsGrid">("ProductsGrid");
+const displayView = ref<"ProductsTable" | "ProductsGrid">("ProductsGrid");
 const components = { ProductsGrid, ProductsTable };
 const { state, category, loadCategoryWithProducts } = useCategories();
 
 loadCategoryWithProducts(slug.value);
+
+const onUpdateMode = (event) => {
+  console.log('updatemode', event)
+}
 </script>
 
 <template>
   <Loading v-if="state === 'loading'" />
   <Error v-else-if="state === 'error'" />
   <div v-else-if="state === 'ready'" class="p-6">
-    <h1 class="text-5xl font-bold mb-3">{{ category.title }}</h1>
-
-    <div>
-      <label>
-        <input
-          type="radio"
-          name="radio-1"
-          class="radio"
-          v-model="displaView"
-          value="ProductsGrid"
-          checked="checked"
-        />Grid
-      </label>
-      <label>
-        <input
-          type="radio"
-          name="radio-1"
-          class="radio"
-          v-model="displaView"
-          value="ProductsTable"
-        />
-        Table</label
-      >
+    <div class="flex flex-col md:flex-row justify-between">
+        <h1 class="text-5xl font-bold mb-3">{{ category.title }}</h1>
+        <DisplayController v-model="displayView" />      
     </div>
-
     <div class="overflow-x-auto" v-if="category.products">
-      <component :is="components[displaView]" :products="category.products" />
+      <component :is="components[displayView]" :products="category.products" />
 
       <div class="join">
         <button class="join-item btn">1</button>

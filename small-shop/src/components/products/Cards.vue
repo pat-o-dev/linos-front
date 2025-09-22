@@ -3,7 +3,9 @@ import { onMounted, computed } from "vue";
 import type { Category } from '@/types/shop'
 import { useProducts } from '@/composables/useProducts'
 import Error from '@/components/layouts/Error.vue'
-import Card from "@/components/products/Card.vue";
+import Loading from "@/components/layouts/Loading.vue"
+import Card from "@/components/products/Card.vue"
+import CategoryLink from '@/components/navs/CategoryLink.vue'
 
 const props = withDefaults(
   defineProps<{
@@ -13,7 +15,7 @@ const props = withDefaults(
   }>(),
   {
     quantity: 2,
-    category: { id: 0, title: "Men's clothing", slug: "men's clothing" },
+    category: { id: 0, title: "Men's clothing", slug: encodeURIComponent("men's clothing") },
   }
 );
 
@@ -36,9 +38,12 @@ onMounted(() => {
 
 <template>
   <div class="w-full max-w-full bg-base-300 rounded-4xl p-6 lg:mb-6">
-    <h2 v-if="title" class="text-5xl font-bold mb-3">{{ title }}</h2>
-    <h2 v-else class="text-5xl font-bold mb-3">{{ category.title }}</h2>
-    <div v-if="state === 'loading'">Loading</div>
+    <h2 v-if="title" class="text-2xl font-bold mb-3">{{ title }}</h2>
+    <h2 v-else class="text-5xl font-bold mb-3">
+      <CategoryLink :title="category.title" :slug="category.slug" />
+    </h2>
+    <Loading v-if="state === 'loading'" />
+    <Error v-else-if="state === 'error'" />
     <div
       v-else-if="state === 'ready'"
       :class="gridClass"
@@ -46,9 +51,6 @@ onMounted(() => {
       <template v-for="product in products" :key="product.id">
         <Card :product="product" />
       </template>
-    </div>
-    <div v-else role="alert" class="alert alert-error">
-      <Error />
     </div>
   </div>
 </template>

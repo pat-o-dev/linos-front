@@ -14,7 +14,7 @@ const props = withDefaults(defineProps<Props>(), {
 
 <template>
     <div v-if="products.length">
-        <div class="grid grid-cols-4 gap-4 p-4">
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4">
             <template v-for="product in products" :key="product.id">
                 <ProductCard :product="product" />
             </template>
