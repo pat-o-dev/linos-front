@@ -3,7 +3,7 @@ import { onMounted, computed } from "vue";
 import type { Category } from '@/types/shop'
 import { useProducts } from '@/composables/useProducts'
 import Error from '@/components/layouts/Error.vue'
-import Card from "./Card.vue";
+import Card from "@/components/products/Card.vue";
 
 const props = withDefaults(
   defineProps<{

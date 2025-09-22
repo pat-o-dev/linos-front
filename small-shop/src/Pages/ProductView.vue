@@ -3,6 +3,7 @@ import { ref, watch, onMounted, computed } from "vue";
 import { useRoute } from "vue-router";
 import Breadcrumbs from '@/components/layouts/Breadcrumbs.vue'
 import Error from '@/components/layouts/Error.vue'
+import Loading from '@/components/layouts/Loading.vue'
 import Rating from '@/components/products/Rating.vue'
 import ProductCars from '@/components/products/Cards.vue'
 import { useProducts } from "@/composables/useProducts";
@@ -32,7 +33,6 @@ watch(product, (newProduct) => {
 onMounted(() => {
   if(id.value) {
     findProduct(id.value);
-    console.log(product.value)
   }
 });
 </script>
@@ -68,8 +68,6 @@ onMounted(() => {
       </div>
     </div>
   </div>
-  <div v-else-if="state === 'loading'">Chargement en cours</div>
-  <div v-else role="alert" class="alert alert-error">
-    <Error />
-  </div>
+  <Loading v-if="state === 'loading'" />
+  <Error v-else-if="state === 'error'" />
 </template>

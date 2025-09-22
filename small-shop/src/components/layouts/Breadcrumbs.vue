@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import type { Product, Category} from "@/types/shop";
-import CategoryLink from "@/components/categories/NavLink.vue";
+import type { Product, Category} from "@/types/shop"
+import CategoryLink from "@/components/navs/CategoryLink.vue"
 
 const props = defineProps<{
     categories?: Any[] | null,
@@ -13,7 +13,7 @@ const props = defineProps<{
     <ul>
       <li><a href="/">Home</a></li>
       <template v-if="categories">
-      <li v-for="category in categories" :key="index">
+      <li v-for="category in categories">
         <CategoryLink :title="category.title" :slug="category.slug" />
       </li>
       </template>

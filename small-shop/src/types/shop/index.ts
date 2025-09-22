@@ -1,7 +1,8 @@
 export interface Category {
-  id: number;
-  title: string;
-  slug: string;
+  id: number
+  title: string
+  slug: string
+  products: Product[]
 }
 
 export interface Product {
@@ -11,4 +12,10 @@ export interface Product {
   description: string
   category: string
   image: string
+  rating: Rating
+}
+
+export interface Rating {
+  rate: number
+  count: number
 }

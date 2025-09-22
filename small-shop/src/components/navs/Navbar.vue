@@ -1,6 +1,6 @@
 <script setup>
 import ThemeController from "@/components/layouts/ThemeController.vue";
-import Navlink from "@/components/layouts/Navlink.vue";
+import Navlink from "@/components/navs/Navlink.vue";
 </script>
 
 <template>
