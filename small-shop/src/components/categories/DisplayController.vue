@@ -7,17 +7,23 @@ const emit = defineEmits(["update:modelValue"]);
 const vModel = ref(props.modelValue);
 
 onMounted(() => {
-  vModel.value = localStorage.getItem("categoryDisplay");
+  const saved = localStorage.getItem("categoryDisplay");
+  if(saved) {
+    vModel.value = saved;
+  }
 });
 
 watch(vModel, (newMode) => {
-  localStorage.setItem("categoryDisplay", newMode);
-  emit("update:modelValue", newMode);
+  if(newMode) {
+    localStorage.setItem("categoryDisplay", newMode);
+    emit("update:modelValue", newMode);
+  }
 });
+
 </script>
 
 <template>
-  <div class="flex flex-row md:flex-col space-y-2 pr-6">
+  <div v-if="vModel" class="flex flex-row md:flex-col space-y-2 pr-6">
     <label>
       <input
         type="radio"

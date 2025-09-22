@@ -12,6 +12,7 @@ import ProductsGrid from "@/components/categories/ProductsGrid.vue";
 const router = useRoute();
 const slug = ref(String(router.params.slug));
 const displayView = ref<"ProductsTable" | "ProductsGrid">("ProductsGrid");
+
 const components = { ProductsGrid, ProductsTable };
 const { state, category, loadCategoryWithProducts } = useCategories();
 
