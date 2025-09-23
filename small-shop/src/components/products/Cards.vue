@@ -27,7 +27,7 @@ const gridClass = computed(() => {
 </script>
 
 <template>
-  <div class="w-full max-w-full bg-base-300 rounded-4xl p-6 lg:mb-6">
+  <div v-if="category.products" class="w-full max-w-full bg-base-300 rounded-4xl p-6 lg:mb-6">
     <h2 v-if="title" class="text-2xl font-bold mb-3">{{ title }}</h2>
     <h2 v-else class="text-5xl font-bold mb-3">
       <CategoryLink :title="category.title" :slug="category.slug" />

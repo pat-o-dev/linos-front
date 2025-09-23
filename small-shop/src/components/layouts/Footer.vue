@@ -21,9 +21,10 @@
       <div>
         SmallShop 
         <ul>
-          <li><a class="link" href="https://github.com/pat-o-dev/vuejs-small-shop">Github</a></li>
-          <li><a class="link" href="https://patrick.genitrini.me/">Patrick Genitrini</a></li>
-          <li><a class="link" href="https://www.linkedin.com/in/patrickgenitrini/">LinkedIn</a></li>
+          <li><a class="link" target="_blank" href="https://github.com/pat-o-dev/vuejs-small-shop">Github Front VueJs</a></li>
+          <li><a class="link" target="_blank" href="https://github.com/pat-o-dev/sf-small-shop">Github API Symfony</a></li>
+          <li><a class="link" target="_blank" href="https://patrick.genitrini.me/">Patrick Genitrini</a></li>
+          <li><a class="link" target="_blank" href="https://www.linkedin.com/in/patrickgenitrini/">LinkedIn</a></li>
         </ul>
       </div>
     </aside>
