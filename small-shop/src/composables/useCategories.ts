@@ -1,8 +1,8 @@
-import { ref } from 'vue'
-import { useFuncs } from '@/composables/useFuncs'
-import { useProducts } from '@/composables/useProducts'
-import axios from 'axios'
-import type { Category } from '@/types/shop'
+import { ref } from "vue";
+import { useFuncs } from "@/composables/useFuncs";
+import { useProducts } from "@/composables/useProducts";
+import axios from "axios";
+import type { Category } from "@/types/shop";
 
 export function useCategories() {
 

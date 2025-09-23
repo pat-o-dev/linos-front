@@ -1,11 +1,8 @@
 <script lang="ts" setup>
 import { onMounted, computed } from "vue";
-import type { Category } from '@/types/shop'
-import { useProducts } from '@/composables/useProducts'
-import Error from '@/components/layouts/Error.vue'
-import Loading from "@/components/layouts/Loading.vue"
-import Card from "@/components/products/Card.vue"
-import CategoryLink from '@/components/navs/CategoryLink.vue'
+import type { Category } from "@/types/shop";
+import Card from "@/components/products/Card.vue";
+import CategoryLink from "@/components/navs/CategoryLink.vue";
 
 const props = withDefaults(
   defineProps<{
@@ -19,21 +16,14 @@ const props = withDefaults(
   }
 );
 
-const { state, products, loadProducts } = useProducts()
-
 const gridClass = computed(() => {
   const classes = ['grid', 'gap-4']
-
   if (props.quantity > 1) classes.push('grid-cols-2')
   if (props.quantity > 2) classes.push('lg:grid-cols-3')
   if (props.quantity > 3) classes.push('xl:grid-cols-4')
-
   return classes
 })
 
-onMounted(() => {
-    loadProducts(props.category.slug, props.quantity)
-});
 </script>
 
 <template>
@@ -42,13 +32,10 @@ onMounted(() => {
     <h2 v-else class="text-5xl font-bold mb-3">
       <CategoryLink :title="category.title" :slug="category.slug" />
     </h2>
-    <Loading v-if="state === 'loading'" />
-    <Error v-else-if="state === 'error'" />
     <div
-      v-else-if="state === 'ready'"
       :class="gridClass"
     >
-      <template v-for="product in products" :key="product.id">
+      <template v-for="product in category.products.slice(0, quantity)" :key="product.id">
         <Card :product="product" />
       </template>
     </div>
