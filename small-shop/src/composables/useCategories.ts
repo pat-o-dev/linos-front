@@ -5,7 +5,8 @@ import axios from "axios";
 import type { Category } from "@/types/shop";
 
 export function useCategories() {
-
+    //const apiDomain = "http://127.0.0.1:8000";
+    const apiDomain = "https://ssb.kwansook.com";
     const state = ref<"loading" | "ready" | "error">("loading")
     const categories = ref<Category[]>([])
     const category = ref<Category | null>(null)
@@ -15,7 +16,7 @@ export function useCategories() {
     const loadCagegories = async (): Promise<Category[]|[]> => {
         state.value = "loading";
         try {
-            const res = await axios.get<Category[]|[]>("http://127.0.0.1:8000/api/categories");
+            const res = await axios.get<Category[]|[]>(`${apiDomain}/api/categories`);
             categories.value = res.data;
             state.value = "ready";
         } catch(error) {
@@ -27,7 +28,7 @@ export function useCategories() {
         state.value = "loading"
         try {
             window.log('slug', slug)
-            const res = await axios.get<Category[]|[]>(`http://127.0.0.1:8000/api/categories/slug/${slug}`);
+            const res = await axios.get<Category[]|[]>(`${apiDomain}/api/categories/slug/${slug}`);
             category.value = res.data.categories
             state.value = "ready";
             return category

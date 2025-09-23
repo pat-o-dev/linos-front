@@ -108,3 +108,4 @@ npm run preview  # prévisualiser build
 - [TailwindCSS](https://tailwindcss.com/docs/installation/using-vite)
 - [daisyUI](https://daisyui.com/)
 - [Pinia](https://pinia.vuejs.org/)
+- [Swiper](https://swiperjs.com/)

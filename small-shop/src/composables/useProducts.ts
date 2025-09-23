@@ -3,7 +3,8 @@ import axios from 'axios'
 import type { Product } from '@/types/shop'
 
 export function useProducts() {
-
+    //const apiDomain = "http://127.0.0.1:8000";
+    const apiDomain = "https://ssb.kwansook.com";
     const state = ref<"loading" | "ready" | "error">("loading")
     const products = ref<Product[]>([])
     const product = ref<Product | null>(null)
@@ -27,7 +28,7 @@ export function useProducts() {
         state.value = "loading"
         try {
             const res = await axios.get<Product>(
-                `http://127.0.0.1:8000/api/products/${id}`
+                `${apiDomain}/api/products/${id}`
             )
             product.value = res.data.products
             state.value = "ready"
