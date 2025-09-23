@@ -20,7 +20,7 @@ export function useCategories() {
             state.value = "ready";
         } catch(error) {
             state.value = "error";
-            console.log('error')
+            window.log('error')
         }
     }
     const loadCategorySf = async (slug: string): Promise<Category|null> => {
@@ -34,7 +34,7 @@ export function useCategories() {
                 products: []
             }
             state.value = "ready"
-            console.log(category)
+            window.log(category)
             // #TODO API fetch category
             return category
         } catch(error) {

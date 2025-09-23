@@ -14,7 +14,6 @@ const props = withDefaults(defineProps<Props>(), {
 
 const addToCart = (event) => {
     cart.add(props.product, 1)
-    console.log(props.product)
 }
 
 </script>

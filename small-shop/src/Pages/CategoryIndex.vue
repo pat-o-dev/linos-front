@@ -15,6 +15,7 @@ watch(categories, () => {
         selectedCategory.value = categories.value.categories[0]
     }
 })
+
 </script>
 
 <template>
@@ -32,17 +33,9 @@ watch(categories, () => {
                 </li>
             </ul>
         </div>
-    
         <div v-if="selectedCategory">
             <h2 class="text-xl font-bold mb-3">{{ selectedCategory.title }}</h2>
-            
             <ProductsGrid :products="selectedCategory.products" />
-            
         </div>
-    
     </div>
-
-
-
- 
 </template>
