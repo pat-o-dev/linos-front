@@ -4,6 +4,8 @@ import { defineStore } from 'pinia'
 export const useCartStore = defineStore('cart', () => {
     // init
     const items = ref([]);
+    const shippingFree = ref(300);
+    const shippingFees = ref(4.99);
     // total of quantity item
     const count = computed(() => items.value.reduce((total, item) => total + item.q, 0));
     // add, edit quantity product
@@ -17,7 +19,12 @@ export const useCartStore = defineStore('cart', () => {
             }
         }
         else if(quantity > 0) {
-            items.value.push({ id: product.id, q: quantity});
+            items.value.push({ 
+                id: product.id, 
+                title: product.title,
+                image: product.image,
+                price: product.price,
+                q: quantity});
         }
     };
     // remove item
@@ -28,17 +35,36 @@ export const useCartStore = defineStore('cart', () => {
     const clear = () => {
         items.value = []
     };
+    const totalItems = computed(() => {
+        return items.value.reduce((total, item) => total + item.price * item.q, 0)
+    });
+    const fees = computed(() => {
+        if(totalItems.value > shippingFree.value) {
+            return 0;
+        }
+        return shippingFees.value;
+    });
+    const total = computed(() => {
+        return totalItems.value + fees.value;
+    });     
 
     return { 
         items,
+        shippingFees,
+        shippingFree,
         count,
         add,
         del,
         clear,
+        totalItems,
+        fees,
+        total,
     };
 },
 {
-    persist: {
-        storage: localStorage,
-    },
+   persist: {
+    storage: localStorage,
+    key: 'pinia_state_cart', // Clé personnalisée pour correspondre à 'cart' dans localStorage
+    paths: ['items'], // Persister uniquement items
+  },
 })

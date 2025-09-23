@@ -18,18 +18,14 @@ const cart = useCartStore();
       </div>
     </div>
     <div class="flex-none">
-      <div class="border border-blue-300 bg-blue-200/50 rounded w-full inline-block p-6 float-end">Panier {{ cart.count }}
-        <ul class="flex flex-col space-x-2">
-          <li v-for="item in cart.items" :key="item.id">{{ item }}
 
-             <button @click="cart.add(item, -1)">-</button>
-              <button @click="cart.del(item.id)">X</button>
 
-          </li>
-        </ul>
-       
-        <button @click="cart.clear()">Vider</button>
-      </div>
+      <RouterLink to="/cart" class="mr-4">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 inline-block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+        </svg>{{ cart.count }}
+      </RouterLink>
+
 
       <ThemeController />
     </div>

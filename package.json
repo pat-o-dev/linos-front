@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "pinia-plugin-persistedstate": "^4.5.0"
+    "pinia-plugin-persistedstate": "^4.5.0",
+    "pinia-shared-state": "^1.0.1"
   }
 }
