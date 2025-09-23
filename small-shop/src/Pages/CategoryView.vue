@@ -14,13 +14,15 @@ const slug = ref(String(router.params.slug));
 const displayView = ref<"ProductsTable" | "ProductsGrid">("ProductsGrid");
 
 const components = { ProductsGrid, ProductsTable };
-const { state, category, loadCategoryWithProducts } = useCategories();
+const { state, category, categories, loadCagegories, loadCategoryWithProducts } = useCategories();
 
 loadCategoryWithProducts(slug.value);
+
 
 </script>
 
 <template>
+
   <Loading v-if="state === 'loading'" />
   <Error v-else-if="state === 'error'" />
   <div v-else-if="state === 'ready'" class="p-6">

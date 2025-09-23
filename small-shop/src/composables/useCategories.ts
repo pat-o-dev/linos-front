@@ -1,6 +1,7 @@
 import { ref } from 'vue'
 import { useFuncs } from '@/composables/useFuncs'
 import { useProducts } from '@/composables/useProducts'
+import axios from 'axios'
 import type { Category } from '@/types/shop'
 
 export function useCategories() {
@@ -11,6 +12,36 @@ export function useCategories() {
     const { state: productState, products, loadProducts } = useProducts()
     const { randomInt, capitalize } = useFuncs()
 
+    const loadCagegories = async (): Promise<Category[]|[]> => {
+        state.value = "loading";
+        try {
+            const res = await axios.get<Category[]|[]>('http://127.0.0.1:8000/api/categories');
+            categories.value = res.data;
+            state.value = "ready";
+        } catch(error) {
+            state.value = "error";
+            console.log('error')
+        }
+    }
+    const loadCategorySf = async (slug: string): Promise<Category|null> => {
+        state.value = "loading"
+        try {
+            const title = capitalize(decodeURIComponent(slug))
+            category.value = { 
+                id: randomInt(1, 100), 
+                title: title, 
+                slug: slug, 
+                products: []
+            }
+            state.value = "ready"
+            console.log(category)
+            // #TODO API fetch category
+            return category
+        } catch(error) {
+            state.value = "error"
+            return null
+        }     
+    }
     const loadCategory = async (slug: string): Promise<Category|null> => {
         state.value = "loading"
         try {
@@ -49,6 +80,8 @@ export function useCategories() {
         categories,
         category,
         loadCategory,
+        loadCategorySf,
+        loadCagegories,
         loadCategoryWithProducts,
     }
 

@@ -27,7 +27,7 @@ export function useProducts() {
         state.value = "loading"
         try {
             const res = await axios.get<Product>(
-                `https://fakestoreapi.com/products/${id}`
+                `http://127.0.0.1:8000/api/products/${id}`
             )
             product.value = res.data
             state.value = "ready"
