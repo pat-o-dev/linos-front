@@ -29,7 +29,7 @@ export function useProducts() {
             const res = await axios.get<Product>(
                 `http://127.0.0.1:8000/api/products/${id}`
             )
-            product.value = res.data
+            product.value = res.data.products
             state.value = "ready"
             return res.data
         } catch {

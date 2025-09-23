@@ -28,11 +28,7 @@ watch(
 
 watch(product, (newProduct) => {
   if (newProduct) {
-    category.value = {
-      id: 6,
-      title: newProduct.category,
-      slug: encodeURIComponent(newProduct.category),
-    };
+    category.value = product.value.categories[0];
   }
 });
 
