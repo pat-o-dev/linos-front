@@ -13,9 +13,9 @@ const slug = ref(String(router.params.slug));
 const displayView = ref<"ProductsTable" | "ProductsGrid">("ProductsGrid");
 
 const components = { ProductsGrid, ProductsTable };
-const { state, category, categories, loadCagegories, loadCategoryWithProducts } = useCategories();
+const { state, category, categories, loadCagegories, loadCategory } = useCategories();
 
-loadCategoryWithProducts(slug.value);
+loadCategory(slug.value);
 </script>
 
 <template>

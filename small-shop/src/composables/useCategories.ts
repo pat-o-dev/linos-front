@@ -23,43 +23,20 @@ export function useCategories() {
             window.log('error');
         }
     }
-    const loadCategorySf = async (slug: string): Promise<Category|null> => {
+    const loadCategory = async (slug: string): Promise<Category|null> => {
         state.value = "loading"
         try {
-            const title = capitalize(decodeURIComponent(slug));
-            category.value = { 
-                id: randomInt(1, 100), 
-                title: title, 
-                slug: slug, 
-                products: []
-            }
+            window.log('slug', slug)
+            const res = await axios.get<Category[]|[]>(`http://127.0.0.1:8000/api/categories/slug/${slug}`);
+            category.value = res.data.categories
             state.value = "ready";
-            // #TODO API fetch category
             return category
         } catch(error) {
             state.value = "error"
             return null
         }     
     }
-    const loadCategory = async (slug: string): Promise<Category|null> => {
-        state.value = "loading"
-        try {
-            const title = capitalize(decodeURIComponent(slug));
-            category.value = { 
-                id: randomInt(1, 100), 
-                title: title, 
-                slug: slug, 
-                products: []
-            }
-            state.value = "ready";
-            // #TODO API fetch category
-            return category
-        } catch(error) {
-            state.value = "error";
-            return null
-        }     
-    }
-
+    
     const loadCategoryWithProducts = async (slug: string): Promise<Category|null> => {
         try {
             loadCategory(slug);
@@ -79,7 +56,6 @@ export function useCategories() {
         categories,
         category,
         loadCategory,
-        loadCategorySf,
         loadCagegories,
         loadCategoryWithProducts,
     }
