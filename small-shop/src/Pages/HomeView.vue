@@ -1,27 +1,26 @@
 <script lang="ts" setup>
 import { ref, computed, watch } from "vue";
-import ProductCars from '@/components/products/Cards.vue'
-import Swiper from '@/components/products/Swiper.vue'
-
+import ProductCars from "@/components/products/Cards.vue"
+import Swiper from "@/components/products/Swiper.vue";
 import Loading from "@/components/layouts/Loading.vue";
 import Error from "@/components/layouts/Error.vue";
 import { useCategories } from "@/composables/useCategories";
 import type { Category } from "@/types/shop";
 import { useFuncs } from "@/composables/useFuncs";
 
-const homeCategory = ref<Category[]>([])
+const homeCategory = ref<Category[]>([]);
 
 const { state, categories, loadCagegories } = useCategories();
 loadCagegories();
 
 const countCategories = computed(() => {
-    return categories.value.categories.length
+    return categories.value.categories.length;
 })
 
 const { randomItems } = useFuncs();
 watch(categories, () => {
     if(state.value === "ready" && categories.value) {
-        homeCategory.value = randomItems(categories.value.categories, 5)
+        homeCategory.value = randomItems(categories.value.categories, 5);
     }
 })
 </script>
@@ -30,8 +29,6 @@ watch(categories, () => {
     <Loading v-if="state === 'loading'" />
     <Error v-else-if="state === 'error'" />
     <div v-else-if="state === 'ready' && categories" class="p-6">
-
-
         <Swiper v-if="homeCategory[4]" :category="homeCategory[4]"/>
 
         <div class="grid lg:grid-cols-2 gap-4">

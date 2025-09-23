@@ -15,26 +15,25 @@ export function useCategories() {
     const loadCagegories = async (): Promise<Category[]|[]> => {
         state.value = "loading";
         try {
-            const res = await axios.get<Category[]|[]>('http://127.0.0.1:8000/api/categories');
+            const res = await axios.get<Category[]|[]>("http://127.0.0.1:8000/api/categories");
             categories.value = res.data;
             state.value = "ready";
         } catch(error) {
             state.value = "error";
-            window.log('error')
+            window.log('error');
         }
     }
     const loadCategorySf = async (slug: string): Promise<Category|null> => {
         state.value = "loading"
         try {
-            const title = capitalize(decodeURIComponent(slug))
+            const title = capitalize(decodeURIComponent(slug));
             category.value = { 
                 id: randomInt(1, 100), 
                 title: title, 
                 slug: slug, 
                 products: []
             }
-            state.value = "ready"
-            window.log(category)
+            state.value = "ready";
             // #TODO API fetch category
             return category
         } catch(error) {
@@ -45,33 +44,33 @@ export function useCategories() {
     const loadCategory = async (slug: string): Promise<Category|null> => {
         state.value = "loading"
         try {
-            const title = capitalize(decodeURIComponent(slug))
+            const title = capitalize(decodeURIComponent(slug));
             category.value = { 
                 id: randomInt(1, 100), 
                 title: title, 
                 slug: slug, 
                 products: []
             }
-            state.value = "ready"
+            state.value = "ready";
             // #TODO API fetch category
             return category
         } catch(error) {
-            state.value = "error"
+            state.value = "error";
             return null
         }     
     }
 
     const loadCategoryWithProducts = async (slug: string): Promise<Category|null> => {
         try {
-            loadCategory(slug)
+            loadCategory(slug);
             const data = await loadProducts(slug, 10);
             if(category.value && productState.value == "ready") {
-                category.value.products = data
+                category.value.products = data;
             }
-            return category
+            return category;
         } catch(error) {
-            state.value = "error"
-            return null
+            state.value = "error";
+            return null;
         }
     }
 
@@ -84,5 +83,4 @@ export function useCategories() {
         loadCagegories,
         loadCategoryWithProducts,
     }
-
 }

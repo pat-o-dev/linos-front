@@ -17,13 +17,12 @@ const props = withDefaults(
 );
 
 const gridClass = computed(() => {
-  const classes = ['grid', 'gap-4']
-  if (props.quantity > 1) classes.push('grid-cols-2')
-  if (props.quantity > 2) classes.push('lg:grid-cols-3')
-  if (props.quantity > 3) classes.push('xl:grid-cols-4')
+  const classes = ['grid', 'gap-4'];
+  if (props.quantity > 1) classes.push('grid-cols-2');
+  if (props.quantity > 2) classes.push('lg:grid-cols-3');
+  if (props.quantity > 3) classes.push('xl:grid-cols-4');
   return classes
 })
-
 </script>
 
 <template>

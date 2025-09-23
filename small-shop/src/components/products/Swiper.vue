@@ -1,7 +1,7 @@
 <script setup>
 import Card from "@/components/products/Card.vue";
 import CategoryLink from "@/components/navs/CategoryLink.vue";
-import { Swiper, SwiperSlide } from 'swiper/vue';
+import { Swiper, SwiperSlide } from "swiper/vue";
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 const props = defineProps({
     category: Object
@@ -32,7 +32,7 @@ const modules = [Autoplay, Pagination, Navigation];
     }"
     class="mySwiper"
   >
-   <swiper-slide v-for="product in category.products.slice(0, quantity)" :key="product.id">
+   <swiper-slide v-for="product in category.products" :key="product.id">
         <Card :product="product" />
       </swiper-slide>
   </swiper>
