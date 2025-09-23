@@ -14,6 +14,7 @@ const cart = useCartStore();
       <div class="flex space-x-6 items-center">
         <a class="btn btn-ghost normal-case text-xl" href="/" >SmallShop</a>
         <Navlink :to="{ name: 'homepage' }">Home</Navlink>
+        <Navlink :to="{ name: 'categories.index' }">Categories</Navlink>
         <Navlink :to="{ name: 'about' }">About</Navlink>
       </div>
     </div>
