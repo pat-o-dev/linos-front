@@ -1,75 +1,112 @@
-# Nuxt Minimal Starter
+# Linos Store Front
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+vuejs-small-shop devient Linos Store et passe sur Nuxt
+Petit projet e-commerce avec Vue 3, TailwindCSS et daisyUI.
 
-## Setup
+---
 
-Make sure to install dependencies:
+## Installation
 
-```bash
-# npm
+1. **Cloner le projet**
+```
+git clone <url-du-repo>
+cd vuejs-small-shop
+```
+
+2. **Installer les dépendances**
+```
 npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
 ```
 
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
+3. **Lancer le serveur de développement**
+```
 npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
 ```
 
-## Production
+---
 
-Build the application for production:
+## Stack
+- **Nuxt** - render SRR
+- **Vue 3** – framework frontend
+- **Vite** – bundler rapide
+- **TailwindCSS** – framework CSS utilitaire
+- **daisyUI** – composants UI pour Tailwind
+- **Axios** – requêtes HTTP
+- **Pinia** – gestion d'état
+
+---
+
+## Setup TailwindCSS + daisyUI
+
+1. Installer TailwindCSS avec Vite :
+
+```
+npm install -D tailwindcss postcss autoprefixer
+npx tailwindcss init -p
+```
+
+2. Configurer `tailwind.config.js` :
+
+```js
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: [
+    "./index.html",
+    "./src/**/*.{vue,js,ts,jsx,tsx}",
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [require("daisyui")],
+}
+```
+
+3. Ajouter Tailwind dans `src/style.css` :
+
+```css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
+
+4. Importer le CSS dans `main.ts` ou `main.js` :
+
+```ts
+import './style.css'
+```
+
+---
+
+## Structure du projet
+
+```
+src/
+├─ components/  # composants réutilisables
+├─ composables/ # fonctions composables (ex: useProducts)
+├─ pages/       # pages Vue
+├─ types/       # interfaces TypeScript
+├─ router/      # routes Vue Router
+├─ stores/      # stores Pinia
+└─ App.vue
+```
+
+---
+
+## Scripts utiles
 
 ```bash
-# npm
-npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
+npm run dev      # serveur dev
+npm run build    # build production
+npm run preview  # prévisualiser build
 ```
 
-Locally preview production build:
+---
 
-```bash
-# npm
-npm run preview
+## Documentation
 
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+- [Vue 3](https://vuejs.org/)
+- [Vite](https://vitejs.dev/)
+- [TailwindCSS](https://tailwindcss.com/docs/installation/using-vite)
+- [daisyUI](https://daisyui.com/)
+- [Pinia](https://pinia.vuejs.org/)
+- [Swiper](https://swiperjs.com/)
