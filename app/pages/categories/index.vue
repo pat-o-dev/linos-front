@@ -16,6 +16,7 @@ if (error.value) {
 
 <template>
   <section>
+    <AppsHideSidebar />
     <div v-if="categories.categories.length" class="p-6 min-w-1/5">
             <h1 class="text-xl font-bold mb-3">Categories :</h1>
             <ul class="">

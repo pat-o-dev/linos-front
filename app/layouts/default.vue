@@ -1,14 +1,24 @@
+<script setup>
+const showSidebar = useState("showSidebar", () => true)
+</script>
 <template>
-  <UApp>
-    <div class="min-h-screen flex flex-col">
-      <AppsHeader />
-      <div class="flex flex-1">
+  <div class="min-h-screen flex flex-col bg-gray-50">
+    <!-- Header -->
+    <AppsHeader />
+    <!-- Contenu principal -->
+    <div class="flex flex-1 container mx-auto">
+      <!-- Sidebar -->
+      <aside v-if="showSidebar" class="hidden md:block w-64 shadow-sm">
         <AppsSidebar />
-        <main class="flex-1 p-6 bg-gray-50">
-          <NuxtPage />
-        </main>
-      </div>
-      <AppsFooter />
+      </aside>
+
+      <!-- Page -->
+      <main class="flex-1 p-6 overflow-y-auto">
+        <NuxtPage />
+      </main>
     </div>
-  </UApp>
+
+    <!-- Footer -->
+    <AppsFooter />
+  </div>
 </template>
