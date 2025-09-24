@@ -103,7 +103,7 @@ npm run preview  # prévisualiser build
 ---
 
 ## Documentation
-
+- [Nuxt 4](https://nuxt.com/docs/4.x/get-started/installation)
 - [Vue 3](https://vuejs.org/)
 - [Vite](https://vitejs.dev/)
 - [TailwindCSS](https://tailwindcss.com/docs/installation/using-vite)
