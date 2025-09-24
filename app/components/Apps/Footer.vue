@@ -1,5 +1,4 @@
 <template>
-   <!-- Footer -->
     <UFooter class="bg-gray-800 text-white e p-4 mt-auto">
       <template #left>
         <p class="text-white text-sm">

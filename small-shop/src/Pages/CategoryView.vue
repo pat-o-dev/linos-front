@@ -29,15 +29,6 @@ loadCategory(slug.value);
     </div>
     <div class="overflow-x-auto" v-if="category.products">
       <component :is="components[displayView]" :products="category.products" />
-<!--
-      <div class="join">
-        <button class="join-item btn">1</button>
-        <button class="join-item btn">2</button>
-        <button class="join-item btn btn-disabled">...</button>
-        <button class="join-item btn">99</button>
-        <button class="join-item btn">100</button>
-      </div>
-    -->
     </div>
   </div>
 </template>

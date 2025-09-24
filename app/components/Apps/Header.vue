@@ -1,10 +1,10 @@
 <template>
-  <!-- Header -->
 
       <UHeader title="Linos Store" >
 
     <UNavigationMenu :items="items" />
     <template #right>
+      <CartsSmallCart />
       <UColorModeButton />
     </template>
     <template #body>

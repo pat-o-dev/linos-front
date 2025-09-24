@@ -13,7 +13,6 @@ const props = withDefaults(defineProps<Props>(), {
 
 <template>
   <table v-if="products.length" class="table">
-    <!-- head -->
     <thead>
       <tr>
         <th>

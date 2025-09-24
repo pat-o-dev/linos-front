@@ -13,12 +13,23 @@
     "@nuxt/eslint": "^1.9.0",
     "@nuxt/image": "^1.11.0",
     "@nuxt/ui": "^4.0.0",
+    "@pinia/nuxt": "^0.11.2",
+    "@tailwindcss/postcss": "^4.1.13",
     "eslint": "^9.36.0",
     "nuxt": "^4.1.2",
+    "pinia": "^3.0.3",
+    "pinia-plugin-persistedstate": "^4.5.0",
+    "pinia-shared-state": "^1.0.1",
     "tailwindcss": "^4.1.13",
     "typescript": "^5.9.2",
     "vue": "^3.5.21",
     "vue-router": "^4.5.1"
   },
-  "packageManager": "pnpm@10.17.1+sha512.17c560fca4867ae9473a3899ad84a88334914f379be46d455cbf92e5cf4b39d34985d452d2583baf19967fa76cb5c17bc9e245529d0b98745721aa7200ecaf7a"
+  "packageManager": "pnpm@10.17.1+sha512.17c560fca4867ae9473a3899ad84a88334914f379be46d455cbf92e5cf4b39d34985d452d2583baf19967fa76cb5c17bc9e245529d0b98745721aa7200ecaf7a",
+  "devDependencies": {
+    "@iconify-json/lucide": "^1.2.68",
+    "@iconify-json/simple-icons": "^1.2.53",
+    "@nuxtjs/tailwindcss": "^6.14.0",
+    "prettier": "^3.6.2"
+  }
 }

@@ -1,5 +1,4 @@
 <template>
-    <!-- Sidebar -->
     <aside class="w-64 bg-gray-100 p-4 hidden md:block">
         <ul class="space-y-2">
             <li><NuxtLink to="/categories">Categories</NuxtLink></li>
