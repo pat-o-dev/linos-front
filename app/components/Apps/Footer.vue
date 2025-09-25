@@ -27,10 +27,12 @@
         />
       </template>
     </UFooter>
+    <small class="text-gray-400 text-left mt-2">Version: {{ config.public.apiUri }}</small>
 </template>
 
 <script lang="ts" setup>
 import type { NavigationMenuItem } from '@nuxt/ui'
+const config = useRuntimeConfig()
 
 const classNavigationMenu = 'text-white hover:text-secondary'
 const items: NavigationMenuItem[] = [

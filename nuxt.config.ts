@@ -1,6 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
+  ssr: true,
   devtools: {
     enabled: true,
   },
@@ -12,7 +13,7 @@ export default defineNuxtConfig({
   ],
   app: {
     head: {
-      title: 'Linos Store', // default fallback title
+      title: 'Demo Technique Nuxt', // default fallback title
       titleTemplate: '%s - Linos Store',
       htmlAttrs: {
         lang: 'fr',
@@ -29,8 +30,12 @@ export default defineNuxtConfig({
     }
   },
   nitro: {
+    prerender: {
+      routes: ['/', '/categories'], // Pré-rend les routes principales
+      crawlLinks: true, // Explore les liens pour le pré-rendu
+    },
     routeRules: {
-      '/categories': { swr: true },   // Stale-while-revalidate
+      '/categories': { swr: true },  
       '/products/**': { swr: true },
     }
   },
