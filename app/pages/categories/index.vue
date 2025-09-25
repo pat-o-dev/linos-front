@@ -1,43 +1,45 @@
 <script setup lang="ts">
-import type { Category, Product } from "@/types";
-
-const selectedCategory = ref<Category | null>(null)
-
-const { data: categories, error } = await useFetch(
-  "https://ssb.kwansook.com/api/categories",
-  {
-    server: true,
-    key: "categories",
-    default: () => ({ categories: [] }),
-  }
-)
-
-if (error.value) {
-  console.error("Error fetching categories:", error.value)
-} else {
-  selectedCategory.value = categories.value.categories[0] ?? null
-}
+const { categories, error, pending } = useCategories();
+const selectedCategory = ref(null);
+useHead({
+  title: "Categories",
+  meta: [
+    {
+      name: "description",
+      content: "Browse our product categories",
+    },
+  ],
+});
 </script>
 
 <template>
-  <div class="p-6">
-    <div v-if="categories.categories.length" class="min-w-1/5">
+  <div v-if="pending" class="p-6">
+    <p>Loading categories...</p>
+  </div>
+  <div v-else-if="error" class="p-6">
+    <p class="text-red-500">Error loading categories: {{ error.message }}</p>
+  </div>
+  <div v-else-if="!categories || !categories.length" class="p-6">
+    <p>No categories available.</p>
+  </div>
+
+  <div v-else class="p-6">
+    <div v-if="categories.length" class="min-w-1/5">
       <h1 class="text-xl font-bold mb-3">Categories :</h1>
-      <ul>
-        <li
-          v-for="category in categories.categories"
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <div
+          v-for="category in categories"
           :key="category.id"
-          @click="selectedCategory = category"
-          class="link text-primary hover:text-secondary cursor-pointer mb-2"
+          class="link text-default text-center hover:text-secondary cursor-pointer mb-2"
         >
-          {{ category.title }}
-        </li>
-      </ul>
+          <CategoriesGrid :category="category" @mouseover="selectedCategory = category"/>
+        </div>
+      </div>
     </div>
 
     <div v-if="selectedCategory">
-      <h2 class="text-xl font-bold mb-3">{{ selectedCategory.title }}</h2>
-      <CategoriesProductsGrid :products="selectedCategory.products" />
+      <h2 class="text-xl font-bold mb-3">Produit phare de la catégorie {{ selectedCategory.title }}</h2>
+      <CategoriesProductsSmallGrid :products="selectedCategory.products" />
     </div>
   </div>
 </template>

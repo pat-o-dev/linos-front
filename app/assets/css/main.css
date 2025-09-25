@@ -1,2 +1,6 @@
 @import "tailwindcss";
 @import "@nuxt/ui";
+
+.router-link-exact-active {
+  @apply text-primary-500 font-bold;
+}

@@ -32,11 +32,6 @@ const items = computed<NavigationMenuItem[]>(() => [
     active: route.path.startsWith('/categories')
   },
   {
-    label: 'Products',
-    to: '/products',
-    active: route.path.startsWith('/products')
-  },
-  {
     label: 'About',
     to: '/about',
     active: route.path === '/about'

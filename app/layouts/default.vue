@@ -2,7 +2,7 @@
 
 </script>
 <template>
-  <div class="min-h-screen flex flex-col bg-gray-50">
+  <div class="min-h-screen flex flex-col bg-gray-200 text-default dark:bg-gray-700 dark:text-gray-100">
 
     <AppsHeader />
 

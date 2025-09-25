@@ -1,11 +1,16 @@
 <template>
-  <div>
+  <NuxtLink
+        :to="{ name: 'product', params: { slug: product.slug }}"
+        class="text-blue-500 hover:underline"
+      >
     <slot />
-  </div>
+  </NuxtLink>
 </template>
 
 <script lang="ts" setup>
-
+defineProps<{
+    product: Object<any>
+}>()
 </script>
 
 <style>

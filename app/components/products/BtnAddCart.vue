@@ -13,7 +13,9 @@ const props = withDefaults(defineProps<Props>(), {
 });
 
 const addToCart = () => {
-  cart.add(props.product, 1);
+  console.log("Adding to cart:", props.product);
+  if (props.product)
+    cart.add(props.product, 1);
 };
 </script>
 
