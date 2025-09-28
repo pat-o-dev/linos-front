@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="128" height="128" role="img" aria-label="linos.store logo barcode">
-  <rect x="20" y="20" width="216" height="216" rx="28" fill="none" stroke="#ffffff" stroke-width="12"/>
-  <g fill="#ffffff">
+  <rect x="20" y="20" width="216" height="216" rx="28" fill="none" stroke="#00DC82" stroke-width="12"/>
+  <g fill="#00DC82">
     <rect x="62" y="64" width="6" height="128" rx="3"/>
     <rect x="76" y="64" width="10" height="128" rx="4"/>
     <rect x="96" y="64" width="4" height="128" rx="2"/>

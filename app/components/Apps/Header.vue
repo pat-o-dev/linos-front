@@ -1,48 +1,67 @@
 <template>
+  <header class="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+   <div class="container mx-auto flex items-center justify-between p-4">
+    <!-- Logo + titre -->
+    <NuxtLink to="/" class="flex items-center gap-2">
 
-  <UHeader>
-    <template #title>
-         Linos.store
-    </template>
+      <span class="text-xl font-bold">Linos.store</span>
+    </NuxtLink>
 
-    <UNavigationMenu :items="items" />
-    <template #right>
+    <!-- Menu principal -->
+    <nav class="hidden md:flex gap-6">
+      <NuxtLink
+        v-for="item in items"
+        :key="item.to"
+        :to="item.to"
+        :class="[
+          'font-medium transition-colors',
+          item.active
+            ? 'text-primary-600 dark:text-primary-400'
+            : 'text-gray-600 dark:text-gray-300 hover:text-primary-500'
+        ]"
+      >
+        {{ item.label }}
+      </NuxtLink>
+    </nav>
+
+    <!-- Zone à droite -->
+    <div class="flex items-center gap-4">
       <CartsSmallCart />
       <UColorModeButton />
-    </template>
-    <template #body>
-      <UNavigationMenu :items="items" orientation="vertical" class="-mx-2.5" />
-    </template>
-  </UHeader>
+    </div>
+
+      
+    </div>>
+  </header>
+
+  <!-- Menu mobile -->
+  <nav class="md:hidden border-t border-gray-200 dark:border-gray-700 p-4">
+    <ul class="flex flex-col gap-3">
+      <li v-for="item in items" :key="item.to">
+        <NuxtLink
+          :to="item.to"
+          class="block font-medium"
+          :class="[
+            item.active
+              ? 'text-primary-600 dark:text-primary-400'
+              : 'text-gray-600 dark:text-gray-300 hover:text-primary-500'
+          ]"
+        >
+          {{ item.label }}
+        </NuxtLink>
+      </li>
+    </ul>
+  </nav>
 </template>
 
 <script lang="ts" setup>
 import { computed } from "vue";
-import type { NavigationMenuItem } from "@nuxt/ui";
-
 const route = useRoute();
-const isHome = computed(() => route.path === "/");
 
-const items = computed<NavigationMenuItem[]>(() => [
-  {
-    label: "Home",
-    to: "/",
-    active: isHome.value,
-  },
-  {
-    label: "Categories",
-    to: "/categories",
-    active: route.path.startsWith("/categories"),
-  },
-  {
-    label: "About",
-    to: "/about",
-    active: route.path === "/about",
-  },
-  {
-    label: "Contact",
-    to: "/contact",
-    active: route.path === "/contact",
-  },
+const items = computed(() => [
+  { label: "Home", to: "/", active: route.path === "/" },
+  { label: "Categories", to: "/categories", active: route.path.startsWith("/categories") },
+  { label: "About", to: "/about", active: route.path === "/about" },
+  { label: "Contact", to: "/contact", active: route.path === "/contact" }
 ]);
 </script>
