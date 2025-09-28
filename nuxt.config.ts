@@ -26,12 +26,13 @@ export default defineNuxtConfig({
   css: ['~/assets/css/main.css'],
   runtimeConfig: {
     public: {
-      apiUri: '',
+      apiUri: process.env.API_BASE,
     }
   },
   nitro: {
     prerender: {
       routes: ['/', '/categories'], // Pré-rend les routes principales
+      ignore: ['/products'],
       crawlLinks: true, // Explore les liens pour le pré-rendu
     },
     routeRules: {

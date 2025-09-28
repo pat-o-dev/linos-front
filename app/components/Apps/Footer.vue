@@ -6,6 +6,7 @@
         </p>
       </template>
 
+
       <UNavigationMenu :items="items" class="text-white" variant="link" />
 
       <template #right>
@@ -39,14 +40,12 @@ const items: NavigationMenuItem[] = [
   {
     label: 'Patrick Genitrini',
     class: classNavigationMenu,
-    trailingIcon: 'i-lucide-bike',
     to: 'https://patrick.genitrini.me/',
     target: '_blank'
   },
   {
     label: 'Linos Store Front',
     class: classNavigationMenu,
-    trailingIcon: 'i-lucide-github',
     to: 'https://github.com/pat-o-dev/linos-front',
     target: '_blank'
   }

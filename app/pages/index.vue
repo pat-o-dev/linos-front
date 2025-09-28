@@ -56,7 +56,7 @@ const categoriesOther = computed(() => categories.value?.filter((category) => ca
 
 </div>
 
-  <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
     <div
       v-for="category in categoriesOther"
       :key="category.id"
@@ -97,4 +97,7 @@ const categoriesOther = computed(() => categories.value?.filter((category) => ca
     #3A5468 100%   /* moins sombre à la fin */
   );
 
-}</style>
+}
+
+
+</style>

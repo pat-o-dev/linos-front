@@ -15,15 +15,9 @@ const gridColsClass = computed(() => {
 })
 </script>
 <template>
-    <div v-if="products.length">
-        <div :class="`grid gap-2 md:gap-4 ${gridColsClass}`">
-            <template v-for="product in productsReduce" :key="product.id">
-                <ProductsGrid :product="product" />
-            </template>
-        </div>
+    <div v-if="products.length" :class="`grid gap-1 py-1 px-1 md:py-4 md:gap-2 ${gridColsClass}`">
+        <template v-for="product in productsReduce" :key="product.id">
+            <ProductsGrid :product="product" />
+        </template>
     </div>
-    <div v-else>
-        No products
-    </div>    
-
 </template>

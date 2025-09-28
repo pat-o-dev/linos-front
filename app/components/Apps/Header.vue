@@ -2,12 +2,7 @@
 
   <UHeader>
     <template #title>
-      <NuxtLink to="/" class="flex items-center gap-2">
-        <img src="/linos.svg" alt="Linos Store" class="w-12 h-12" />
-        <span class="text-xl font-bold !text-gray-900 dark:!text-gray-100"
-          >Linos.store</span
-        >
-      </NuxtLink>
+         Linos.store
     </template>
 
     <UNavigationMenu :items="items" />

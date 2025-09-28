@@ -24,3 +24,12 @@ export interface CartItem {
     id: number; // product id
     q: number; // quantity
 }
+
+export interface Page {
+  id: number
+  title: string
+  slug: string
+  content: string
+  metaTitle: string
+  metaDescription: string
+}
