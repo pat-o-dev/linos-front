@@ -44,8 +44,6 @@ useHead({
         :id="product.id"
       />
     </UCard>
-
-    {{  product.categories  }}
     
   </div>
 </template>

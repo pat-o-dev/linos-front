@@ -36,8 +36,8 @@ export default defineNuxtConfig({
       crawlLinks: true, // Explore les liens pour le pré-rendu
     },
     routeRules: {
-      '/categories': { swr: true },  
-      '/products/**': { swr: true },
+      '/categories': { swr: false },  
+      '/products/**': { swr: false },
     }
   },
 })

@@ -4,7 +4,7 @@
 <template>
   <div class="min-h-screen flex flex-col bg-gray-200 text-default dark:bg-gray-700 dark:text-gray-100">
 
-    <UBanner icon="i-lucide-info" to="about" class="bg-nuxt-gradient text-center" title="Demo E-commerce headless Nuxt Symfony." :close="false"/>
+    <UBanner icon="i-lucide-info" to="/about" class="bg-nuxt-gradient text-center" title="Demo E-commerce headless Nuxt Symfony." :close="false"/>
 
     <AppsHeader />
 
