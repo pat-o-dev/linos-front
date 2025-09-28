@@ -13,20 +13,20 @@ useHead({
 </script>
 
 <template>
-  <div v-if="pending" class="p-6">
+  <div v-if="pending" class="p-1 md:p-6">
     <p>Loading categories...</p>
   </div>
-  <div v-else-if="error" class="p-6">
+  <div v-else-if="error" class="p-1 md:p-6">
     <p class="text-red-500">Error loading categories: {{ error.message }}</p>
   </div>
-  <div v-else-if="!categories || !categories.length" class="p-6">
+  <div v-else-if="!categories || !categories.length" class="p-1 md:p-6">
     <p>No categories available.</p>
   </div>
 
-  <div v-else class="p-6">
+  <div v-else class="p-1 md:p-6">
     <div v-if="categories.length" class="min-w-1/5">
       <h1 class="text-xl font-bold mb-3">Categories :</h1>
-      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 md:gap-4">
         <div
           v-for="category in categories"
           :key="category.id"

@@ -11,13 +11,13 @@ const couponInput = ref(null)
 </script>
 
 <template>
-  <section class="w-full bg-base py-9 px-8">
+  <section class="w-full bg-base p-1 md:p-4">
     <h1 class="the-big-heading-for-the-page-title">
       My Small Shopping Cart
     </h1>
-    <div v-if="cart.items.length" class="flex items-start mt-8 gap-6">
-      <div class="bg-base p-4 w-[800px] rounded-xl">
-        <table class="w-full bg-base rounded-xl">
+    <div v-if="cart.items.length" class="flex items-start mt-2 gap-6">
+      <div class="bg-base  rounded-xl">
+        <table class="bg-base rounded-xl">
           <thead>
             <tr
               class="text-center border-b border-gray-400 w-full text-base-content text-sm font-medium uppercase leading-[14px] tracking-wide"

@@ -16,7 +16,7 @@ const gridColsClass = computed(() => {
 </script>
 <template>
     <div v-if="products.length">
-        <div :class="`grid gap-4 p-4 ${gridColsClass}`">
+        <div :class="`grid gap-2 md:gap-4 ${gridColsClass}`">
             <template v-for="product in productsReduce" :key="product.id">
                 <ProductsGrid :product="product" />
             </template>
