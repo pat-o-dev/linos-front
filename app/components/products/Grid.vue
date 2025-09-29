@@ -35,7 +35,7 @@
 
       <!-- Prix + bouton -->
       <div
-        class="card-actions mt-auto flex flex-col md:flex-row md:items-center md:justify-between md:space-x-4 space-y-3 md:space-y-0"
+        class="card-actions mt-auto flex flex-col  md:items-right md:space-x-4 space-y-3 md:space-y-0"
       >
         <ProductsPrice :price="product.price" />
         <ProductsBtnAddCart :product="product" class="w-full md:w-auto" />

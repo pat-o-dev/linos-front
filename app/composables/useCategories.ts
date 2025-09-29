@@ -1,12 +1,12 @@
 import type { Category } from "@/types";
-interface CategoridesResponse {
+interface CategoriesResponse {
   categories: Category[];
 }
 
 export const useCategories = () => {
   const config = useRuntimeConfig();
 
-  const { data, pending, error } = useAsyncData<CategoridesResponse>(
+  const { data, pending, error } = useAsyncData<CategoriesResponse>(
     "categories",
     () => $fetch(`${config.public.apiUri}api/categories`)
   );
@@ -23,7 +23,7 @@ export const useCategories = () => {
 export const useTreeCategories = () => {
   const config = useRuntimeConfig();
 
-  const { data, pending, error } = useAsyncData<CategoridesResponse>(
+  const { data, pending, error } = useAsyncData<CategoriesResponse>(
     "categories-tree",
     () => $fetch(`${config.public.apiUri}api/categories/tree`)
   );

@@ -11,7 +11,7 @@ const props = withDefaults(defineProps<Props>(), {
 const productsReduce = computed(() => { return props.quantity ? props.products.slice(0, props.quantity) : props.products; })
 const gridColsClass = computed(() => {
   if (props.quantity && props.quantity < 4) return 'grid-cols-2'
-  return 'grid-cols-2 md:grid-cols-3 lg:grid-cols-4'
+  return 'grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4'
 })
 </script>
 <template>

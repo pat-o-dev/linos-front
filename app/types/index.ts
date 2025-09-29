@@ -1,8 +1,32 @@
+export interface CartItem {
+    id: number; // product id
+    q: number; // quantity
+}
+
 export interface Category {
   id: number
   title: string
   slug: string
   products: Product[]
+}
+
+export interface Customer {
+  id: number
+  email: string
+  firstname: string
+  lastname: string
+  company?: string
+  birthday?: string
+  gender?: string
+}
+
+export interface Page {
+  id: number
+  title: string
+  slug: string
+  content: string
+  metaTitle: string
+  metaDescription: string
 }
 
 export interface Product {
@@ -18,18 +42,4 @@ export interface Product {
 export interface Rating {
   rate: number
   count: number
-}
-
-export interface CartItem {
-    id: number; // product id
-    q: number; // quantity
-}
-
-export interface Page {
-  id: number
-  title: string
-  slug: string
-  content: string
-  metaTitle: string
-  metaDescription: string
 }

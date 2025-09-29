@@ -1,6 +1,6 @@
 <template>
   <client-only>
-    <NuxtLink to="/cart" class="relative flex items-center">
+    <NuxtLink id="header-cart" to="/cart" class="relative flex items-center">
      <UIcon name="i-lucide-shopping-cart" class="size-8">
         shopping_cart
         </UIcon>
