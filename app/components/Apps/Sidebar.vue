@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-const { categories, error, pending } = useCategories();
+const { tree, error, pending } = useTreeCategories();
 </script>
 
 <template>
@@ -8,12 +8,13 @@ const { categories, error, pending } = useCategories();
             <li><NuxtLink to="/">Home</NuxtLink></li>
             <li v-if="pending"><NuxtLink to="/categories">Categories</NuxtLink></li>
             <li v-else-if="error" class="text-red-500"><NuxtLink to="/categories">Categories</NuxtLink></li>
-            <template v-if="categories && categories.length">
-            <li v-for="category in categories" :key="category.id">
-                <NuxtLink :to="`/categories/${category.slug}`">{{ category.title }}</NuxtLink>
+            <li>            
+                <CategoriesTree :tree="tree" />
+            
             </li>
-            </template>
-            <li><NuxtLink to="/contact">Contact</NuxtLink></li>
+
+
+            <!-- <li><NuxtLink to="/contact">Contact</NuxtLink></li> -->
             <li><NuxtLink to="/about">About</NuxtLink></li>
         </ul>
     </aside>

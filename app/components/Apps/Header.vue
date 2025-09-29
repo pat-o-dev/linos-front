@@ -69,6 +69,6 @@ const items = computed(() => [
   { label: "Home", to: "/", active: route.path === "/" },
   { label: "Categories", to: "/categories", active: route.path.startsWith("/categories") },
   { label: "About", to: "/about", active: route.path === "/about" },
-  { label: "Contact", to: "/contact", active: route.path === "/contact" }
+  // { label: "Contact", to: "/contact", active: route.path === "/contact" }
 ]);
 </script>
