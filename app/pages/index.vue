@@ -20,7 +20,7 @@ const categoriesOther = computed(() => categories.value?.filter((category) => ca
   <section class="mb-4">
 
       <div class="rounded-lg border-primary border-2 mb-4 mx-autow-[1200px] bg-nuxt-gradient">
-        <img src="/slides/home-slide.svg" class="w-full my-5" alt="Demo e-commerce headless Nuxt et Symfony by Patrick Genitrini" />
+        <img src="/slides/home-slide-v2.svg" class="w-full my-5" alt="Demo e-commerce headless Nuxt et Symfony by Patrick Genitrini" />
       </div>
 
 

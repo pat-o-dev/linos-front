@@ -8,8 +8,18 @@ const slug = route.params.slug as string;
 
 const { product, error, pending } = useProduct(slug);
 
+const metaTitle = computed(() => {
+  return product.value?.title ?? "Product"
+})
+
 useHead({
-  title: product.value?.title || "Produit",
+  title: metaTitle,
+  meta: [
+    {
+      name: "description",
+      content: "Demo Nuxt 4 e-commerce application",
+    },
+  ],
 });
 </script>
 <template>
@@ -22,28 +32,56 @@ useHead({
   <div v-else-if="!product">
     <p class="p-6">Product not found.</p>
   </div>
-  <div v-else-if="product" class="min-h-screen">
-    <UCard class="max-w-2xl mx-auto">
-      <template #header>
+<div v-else-if="product" class="min-h-screen py-10">
+  <UCard class="max-w-5xl mx-auto shadow-lg rounded-2xl overflow-hidden">
+    <div class="grid md:grid-cols-2 gap-10">
+      <!-- Image produit -->
+      <div>
         <img
           :src="product.image"
-          class="w-full h-64 object-cover"
           alt="product"
+          class="w-full h-96 object-cover rounded-lg"
         />
-      </template>
-      <h1 class="text-xl font-bold">{{ product.title }}</h1>
-      <p class="text-sm line-clamp-3">{{ product.description }}</p>
+      </div>
 
-      <ProductsPrice :price="product.price" />
-      <ProductsBtnAddCart :product="product" />
+      <!-- Infos produit -->
+      <div class="flex flex-col space-y-6">
+        <h1 class="text-3xl font-bold tracking-tight text-gray-900 dark:text-white">
+          {{ product.title }}
+        </h1>
 
-      <ProductsRating
-        v-if="product.rating"
-        :rate="product.rating.rate"
-        :count="product.rating.count"
-        :id="product.id"
-      />
-    </UCard>
-    
-  </div>
+        <div class="flex flex-col md:flex-row md:items-center md:space-x-6 space-y-4 md:space-y-0">
+          <ProductsPrice :price="product.price" /> 
+          <ProductsBtnAddCart :product="product" />
+        </div>
+
+        <!-- Infos techniques -->
+        <div class="text-sm text-gray-500 dark:text-gray-400 space-y-1">
+          <p>
+            <span class="font-semibold text-gray-700 dark:text-gray-200">Référence :</span>
+            {{ product.sku }}
+          </p>
+          <p>
+            <span class="font-semibold text-gray-700 dark:text-gray-200">Fabricant :</span>
+            {{ product.manufacturerName }}
+          </p>
+        </div>
+        <!-- Description -->
+        <div
+          v-if="product.shortDescription"
+          class="text-gray-700 dark:text-gray-300 text-base leading-relaxed border-t pt-4"
+          v-html="product.shortDescription"
+        ></div>
+        <div
+          v-if="product.description"
+          class="prose prose-gray dark:prose-invert max-w-none text-base leading-relaxed"
+          v-html="product.description"
+        ></div>
+      </div>
+    </div>
+  </UCard>
+</div>
+
+
+
 </template>

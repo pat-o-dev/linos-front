@@ -13,7 +13,6 @@ const props = withDefaults(defineProps<Props>(), {
 });
 
 const addToCart = () => {
-  console.log("Adding to cart:", props.product);
   if (props.product)
     cart.add(props.product, 1);
 };
@@ -26,6 +25,7 @@ const addToCart = () => {
     size="xl"
     color="primary"
     variant="solid"
-    >Buy</UButton
+    class="bg-primary-600 hover:bg-primary-700 text-white font-semibold py-3 px-3 rounded-lg shadow-md transition md:w-auto"
+    >Ajouter au panier</UButton
   >
 </template>

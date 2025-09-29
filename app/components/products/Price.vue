@@ -1,16 +1,18 @@
 <template>
-    <span class="font-bold text-2xl">{{ price.toFixed(2) }}{{ money }}</span>
+    <p class="text-3xl font-extrabold text-primary-600 text-right">
+            {{ price.toFixed(2) }}{{ currency }}
+          </p>
 </template>
 
 <<script lang="ts" setup>
 interface Props {
     price?: number,
-    money?: string,
+    currency?: string,
 }    
 
 const props = withDefaults(defineProps<Props>(), {
     price: 0,
-    money: "€",
+    currency: "€",
 });
 
 </script>

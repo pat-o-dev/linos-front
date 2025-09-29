@@ -7,8 +7,18 @@ const route = useRoute();
 const slug = route.params.slug as string;
 const { category, error, pending } = useCategory(slug);
 
+const metaTitle = computed(() => {
+  return category.value?.title ?? "Category"
+})
+
 useHead({
-  title: category ? category.title : "Category",
+  title: metaTitle,
+  meta: [
+    {
+      name: "description",
+      content: "Demo Nuxt 4 e-commerce application",
+    },
+  ],
 });
 </script>
 
@@ -26,7 +36,7 @@ useHead({
     </div>
     <div v-else class="p-0 md:p-6">
       <h1 class="text-2xl font-bold mb-1 md:mb-4">{{ category.title }}</h1>
-
+         <div class="text-sm line-clamp-3" v-html="category.description"></div>
       <CategoriesProductsGrid :products="category.products" />
 
     </div>

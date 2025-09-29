@@ -29,16 +29,22 @@ export default defineNuxtConfig({
       apiUri: process.env.API_BASE,
     }
   },
-  nitro: {
-    prerender: {
-      routes: ['/', '/categories'], // Pré-rend les routes principales
-      ignore: ['/products'],
-      crawlLinks: true, // Explore les liens pour le pré-rendu
-    },
-    routeRules: {
-      '/': { swr: 120 },  
-      '/categories': { swr: 60 },  
-      '/products/**': { swr: false },
-    }
-  },
+  nitro: process.env.NODE_ENV === 'production'
+    ? {
+        prerender: {
+          routes: ['/about'], // pages vraiment statiques
+        },
+        routeRules: {
+          '/': { swr: 120 },
+          '/categories': { swr: 60 },
+          '/categories/**': { swr: 60 },
+          '/products/**': { swr: 30 },
+        },
+      }
+    : {
+        // En dev → pas de prerender, pas de cache
+        routeRules: {
+          '/**': { swr: false },
+        },
+      },
 })
