@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { categories, error, pending } = useCategories();
+const { tree:categories, error, pending } = useTreeCategories();
 
 useHead({
   title: "Demo Nuxt - Patrick Genitrini",
@@ -24,7 +24,17 @@ const categoriesOther = computed(() => categories.value?.filter((category) => ca
       </div>
 
 
-      <h1>Linos Store : démo d’un e-commerce headless avec Nuxt et Symfony.</h1>
+      <div class="max-w-3xl mx-auto px-6 py-8 text-center">
+        <h1 class="text-2xl md:text-3xl font-bold mb-4">
+          Linos Store
+        </h1>
+        <p class="text-gray-700 text-lg">
+          Démo d’un e-commerce headless moderne : 
+          <span class="font-semibold">Nuxt 4</span> pour le front, 
+          <span class="font-semibold">Symfony 7</span> comme gateway
+          et un catalogue <span class="font-semibold">PrestaShop 8</span> connecté via API.
+        </p>
+      </div>
 
   </section>
 
@@ -56,7 +66,7 @@ const categoriesOther = computed(() => categories.value?.filter((category) => ca
 
 </div>
 
-  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+  <div class="grid grid-cols-1 sm:grid-cols-1 gap-4">
     <div
       v-for="category in categoriesOther"
       :key="category.id"
@@ -77,7 +87,7 @@ const categoriesOther = computed(() => categories.value?.filter((category) => ca
       <CategoriesProductsGrid
         v-if="category.products?.length"
         :products="category.products"
-        :quantity="2"
+        :quantity="4"
       />
       <div v-else class="text-gray-400 dark:text-gray-500 text-sm mt-auto">
         No products available

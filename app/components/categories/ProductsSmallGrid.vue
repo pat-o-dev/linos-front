@@ -6,7 +6,7 @@ defineProps<{
 </script>
 <template>
     <div v-if="products.length">
-        <div class="grid grid-cols-2 md:grid-cols-6 lg:grid-cols-8 gap-4 p-4">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 p-4">
             <template v-for="product in products.slice(0, 8)" :key="product.id">
                 <div
     class="card bg-base-100 w-full shadow-sm hover:shadow-2xl border border-base-200"

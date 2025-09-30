@@ -21,7 +21,40 @@ export const useAuthStore = defineStore(
         return true;
       } catch (err) {
         customer.value = null;
-        return false;
+        console.error("Login error:", err);
+
+        // Renvoie le message de l'API si dispo
+        if (err?.response?._data?.error) {
+          throw new Error(err.response._data.error);
+        }
+
+        throw new Error("Une erreur est survenue lors de la connexion.");
+      }
+    };
+
+    const register = async (email: string, password: string, firstname: string, lastname: string) => {
+      const config = useRuntimeConfig();
+      try {
+        const res = await $fetch<Customer>(
+          `${config.public.apiUri}api/customers/register`,
+          {
+            method: "POST",
+            body: { email, password, firstname, lastname },
+            cache: "no-cache",
+          }
+        );
+        customer.value = res;
+        return true;
+      } catch (err) {
+        customer.value = null;
+        console.error("Login error:", err);
+
+        // Renvoie le message de l'API si dispo
+        if (err?.response?._data?.error) {
+          throw new Error(err.response._data.error);
+        }
+
+        throw new Error("Une erreur est survenue lors de la connexion.");
       }
     };
 
@@ -32,6 +65,7 @@ export const useAuthStore = defineStore(
     return {
       customer,
       login,
+      register,
       logout,
     };
   },

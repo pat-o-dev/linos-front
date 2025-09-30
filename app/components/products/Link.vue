@@ -1,7 +1,7 @@
 <template>
   <NuxtLink
         :to="{ name: 'product', params: { slug: product.slug }}"
-        class="text-blue-500 hover:underline"
+        class="text-primary-500 hover:underline"
       >
     <slot />
   </NuxtLink>

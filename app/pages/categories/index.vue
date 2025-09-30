@@ -30,7 +30,7 @@ useHead({
         <div
           v-for="category in categories"
           :key="category.id"
-          class="link text-default text-center hover:text-secondary cursor-pointer mb-2"
+          class="link text-default text-center hover:text-primary cursor-pointer mb-2"
         >
           <CategoriesGrid :category="category" @mouseover="selectedCategory = category"/>
         </div>
