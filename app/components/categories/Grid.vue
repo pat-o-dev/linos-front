@@ -20,6 +20,6 @@ defineProps<{
         class="h-32 w-32 mx-auto object-cover mb-2"
       />
     </div>
-    <h3 class="text-lg font-semibold">{{ category.title }}</h3>
+    <h2 class="text-lg text-center font-semibold">{{ category.title }}</h2>
   </NuxtLink>
 </template>

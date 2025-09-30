@@ -17,7 +17,7 @@ const categoriesOther = computed(() => categories.value?.filter((category) => ca
 <template>
   <div>
     
-  <section class="mb-4">
+  <section class="mb-4 prose dark:prose-invert">
 
       <div class="rounded-lg border-primary border-2 mb-4 mx-autow-[1200px] bg-nuxt-gradient">
         <img src="/slides/home-slide-v2.svg" class="w-full my-5" alt="Demo e-commerce headless Nuxt et Symfony by Patrick Genitrini" />
@@ -28,7 +28,7 @@ const categoriesOther = computed(() => categories.value?.filter((category) => ca
         <h1 class="text-2xl md:text-3xl font-bold mb-4">
           Linos Store
         </h1>
-        <p class="text-gray-700 text-lg">
+        <p class="text-lg">
           Démo d’un e-commerce headless moderne : 
           <span class="font-semibold">Nuxt 4</span> pour le front, 
           <span class="font-semibold">Symfony 7</span> comme gateway
@@ -51,7 +51,7 @@ const categoriesOther = computed(() => categories.value?.filter((category) => ca
     <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100">
       <NuxtLink
         :to="`/categories/${categoryNews?.slug}`"
-        class="text-lg font-semibold mb-3 text-gray-800 dark:text-gray-100 hover:text-blue-500"
+        class="text-lg font-semibold mb-3 text-gray-800 dark:text-gray-100 hover:bg-primary/50 hover:underline"
       >
         {{ categoryNews?.title }}
       </NuxtLink>
@@ -77,7 +77,7 @@ const categoriesOther = computed(() => categories.value?.filter((category) => ca
         <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100">
           <NuxtLink
         :to="`/categories/${category.slug}`"
-        class="text-lg font-semibold mb-3 text-gray-800 dark:text-gray-100 hover:text-blue-500"
+        class="text-lg font-semibold mb-3 text-gray-800 dark:text-gray-100 hover:bg-primary/50 hover:underline"
       >{{ category.title }} </NuxtLink>
         </h3>
       </header>

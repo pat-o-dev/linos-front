@@ -6,6 +6,7 @@ definePageMeta({
 const route = useRoute();
 const slug = route.params.slug as string;
 const { category, error, pending } = useCategory(slug);
+const { tree: categories } = useTreeCategories();
 
 const metaTitle = computed(() => {
   return category.value?.title ?? "Category"
@@ -24,7 +25,9 @@ useHead({
 
 <template>
   <div class="min-h-screen">
-    Categories / {{ slug }}
+
+
+
     <div v-if="pending" class="p-0 md:p-6">
       <p>Loading category...</p>
     </div>
@@ -35,10 +38,20 @@ useHead({
       <p class="p-0 md:p-6">Category not found.</p>
     </div>
     <div v-else class="p-0 md:p-6">
-      <h1 class="text-2xl font-bold mb-1 md:mb-4">{{ category.title }}</h1>
-         <div class="text-sm line-clamp-3" v-html="category.description"></div>
-      <CategoriesProductsGrid :products="category.products" />
+        <CategoriesBreadcrumb  :current="category" :tree="categories"/>
 
+
+      <h1 class="text-2xl font-bold mb-1 md:mb-4">{{ category.title }}</h1>
+         <div class="text-sm line-clamp-3 md:mb-4" v-html="category.description"></div>
+      
+        <template v-if="category?.children && category.children.length">
+          <CategoriesSubCategories :category="category" />
+        </template> 
+
+        <template v-if="category?.products && category.products.length">
+        <h3 class="text-xl font-bold mb-1">Les produits phares de <strong>{{ category.title }}</strong></h3>
+        <CategoriesProductsGrid :products="category.products" />
+         </template> 
     </div>
   </div>
 </template>

@@ -99,29 +99,6 @@ const couponInput = ref(null)
     </div>
 
     <div v-else>Empty Cart</div>
-    <div
-      class="mt-6 p-5 w-[800px] bg-base rounded-lg border border-base-600 justify-start items-center gap-6 inline-flex"
-    >
-      <h3 class="w-1/4 text-xl font-medium className leading-[30px]">
-        Coupon Code
-        <ul class="text-sm underline cursor-pointer">
-          <li @click="couponInput='Coupon-5'">reduce-5</li>
-          <li @click="couponInput='Coupon-10'">reduce-10</li>
-        </ul>
-        
-      </h3>
-      <div class="w-full border border-base-300">
-        <input
-          v-model="couponInput"
-          placeholder="Enter code"
-          type="text"
-          class="w-2/3 px-6 py-3.5 outline-none bg-base-600 rounded-[46px] text-base-content font-normal leading-normal"
-        /><button
-          class="px-10 py-4 rounded-[43px] bg-primary text-primary-content font-semibold leading-tight"
-        >
-          Apply Coupon
-        </button>
-      </div>
-    </div>
+  
   </section>
 </template>

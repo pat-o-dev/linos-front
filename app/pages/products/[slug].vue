@@ -33,6 +33,8 @@ useHead({
     <p class="p-6">Product not found.</p>
   </div>
 <div v-else-if="product" class="min-h-screen py-10">
+  <CategoriesBreadcrumb  :current="product.categories[0]" :product="product" />
+
   <UCard class="max-w-5xl mx-auto shadow-lg rounded-2xl overflow-hidden">
     <div class="grid md:grid-cols-2 gap-10">
       <!-- Image produit -->
