@@ -5,9 +5,6 @@ import CartItemRow from "@/components/carts/Row.vue";
 import Price from "@/components/products/Price.vue";
 
 const cart = useCartStore();
-
-const couponInput = ref(null)
-
 </script>
 
 <template>

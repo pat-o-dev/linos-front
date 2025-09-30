@@ -27,7 +27,7 @@
       <UColorModeButton />
     </template>
     <template #body>
-      <UNavigationMenu :items="items" orientation="vertical" class="-mx-2.5" />
+      <UNavigationMenu :items="items" orientation="vertical" class="-mx-2.5 text-xl md:text-base" />
     </template>
   </UHeader>
 </template>
@@ -48,11 +48,13 @@ const items = computed<NavigationMenuItem[]>(() => {
       label: "Home",
       to: "/",
       active: isHome.value,
+      class: "text-xl md:text-base",
     },
     {
       label: "About",
       to: "/about",
       active: route.path === "/about",
+      class: "text-xl md:text-base",
     },
   ]
 
@@ -61,15 +63,18 @@ const items = computed<NavigationMenuItem[]>(() => {
       label: "Categories",
       to: "/categories",
       active: route.path.startsWith("/categories"),
+      class: "text-xl md:text-base",
       children: tree.value.map((cat) => ({
         label: cat.title,
         to: `/categories/${cat.slug}`,
         active: route.path === `/categories/${cat.slug}`,
+        class: "text-xl md:text-base",
         // ✅ un niveau de profondeur
         children: cat.children?.map((sub) => ({
           label: sub.title,
           to: `/categories/${sub.slug}`,
           active: route.path === `/categories/${sub.slug}`,
+          class: "text-xl md:text-base",
         })) || [],
       })),
     });
