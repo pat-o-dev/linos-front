@@ -6,7 +6,7 @@
         <template v-if="auth.customer">
           <NuxtLink
             id="header-user"
-            to="/customers/login"
+            to="/customers/profile"
             class="relative flex items-center"
           >
             <UIcon name="i-lucide-user-check" class="size-8"> Account </UIcon>
@@ -37,25 +37,46 @@ import { computed } from "vue";
 import type { NavigationMenuItem } from "@nuxt/ui";
 import { useAuthStore } from "@/stores/authStore";
 
+const { tree, error, pending } = useTreeCategories();
 const auth = useAuthStore();
 const route = useRoute();
 const isHome = computed(() => route.path === "/");
 
-const items = computed<NavigationMenuItem[]>(() => [
-  {
-    label: "Home",
-    to: "/",
-    active: isHome.value,
-  },
-  {
-    label: "Categories",
-    to: "/categories",
-    active: route.path.startsWith("/categories"),
-  },
-  {
-    label: "About",
-    to: "/about",
-    active: route.path === "/about",
-  },
-]);
+const items = computed<NavigationMenuItem[]>(() => {
+    const baseItems = [
+    {
+      label: "Home",
+      to: "/",
+      active: isHome.value,
+    },
+    {
+      label: "About",
+      to: "/about",
+      active: route.path === "/about",
+    },
+  ]
+
+  if (tree.value && tree.value.length > 0) {
+    baseItems.splice(1, 0, {
+      label: "Categories",
+      to: "/categories",
+      active: route.path.startsWith("/categories"),
+      children: tree.value.map((cat) => ({
+        label: cat.title,
+        to: `/categories/${cat.slug}`,
+        active: route.path === `/categories/${cat.slug}`,
+        // ✅ un niveau de profondeur
+        children: cat.children?.map((sub) => ({
+          label: sub.title,
+          to: `/categories/${sub.slug}`,
+          active: route.path === `/categories/${sub.slug}`,
+        })) || [],
+      })),
+    });
+  }
+  return baseItems;
+});
+
+
+
 </script>
